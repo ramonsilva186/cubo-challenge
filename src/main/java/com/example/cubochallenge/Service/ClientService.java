@@ -20,11 +20,16 @@ public class ClientService {
         client.setFirstName(clientDTO.firstName());
         client.setLastName(clientDTO.lastName());
         client.setParticipation(clientDTO.participation());
-
+        if (client.getFirstName() == null || client.getLastName() == null || client.getParticipation() == null) {
+            throw new IllegalArgumentException();
+        }
         return clientRespository.save(client);
     }
 
     public List<Client> listAllClients() {
+        if (clientRespository.findAll().isEmpty()) {
+            throw new IllegalStateException();
+        }
         return clientRespository.findAll();
     }
 }
