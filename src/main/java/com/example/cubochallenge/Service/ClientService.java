@@ -24,7 +24,7 @@ public class ClientService {
         return clientRespository.save(client);
     }
 
-    public List<Client> listAll() {
+    public List<Client> listAllClients() {
         return clientRespository.findAll();
     }
 }
